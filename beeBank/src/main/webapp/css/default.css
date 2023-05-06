@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box ;
+}
+/* Main body Styling */
+body{
+    height: 100vh;
+    background-image: url("../images/Home.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+/* <!-- Crd : Sample Text --> */
+
+
+
+#sample-text-card h4{
+    margin: 0px 475px;
+    font-size: 50px;
+}
