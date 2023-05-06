@@ -1,5 +1,6 @@
 package com.beeBank.beeBank.controllers;
 
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,23 +26,23 @@ public class AuthController {
     @PostMapping("/login")
     public String login(@RequestParam("email")String email,
      @RequestParam("password") String password, 
-     @RequestParam("_token") String token, Model model) {
+     @RequestParam("_token") String token, Model model, HttpSession session) {
 
         if(email.isEmpty() || email == null || password.isEmpty() || password == null) {
             model.addAttribute("error", "Username or Password Cannot be Empty");
             return "login";
         }
 
-        String getEmailinDatabase = userRepository.getUserEmail(email);
+        String getEmailInDatabase = userRepository.getUserEmail(email);
 
-        if(!getEmailinDatabase.isEmpty() || getEmailinDatabase == null) {
+        if(getEmailInDatabase != null) {
             //get password in database:
             String getPasswordInDatabase = userRepository.getUserPassword(getEmailInDatabase);
             //validate password:
             if (!BCrypt.checkpw(password, getPasswordInDatabase)) {
                 model.addAttribute("error", "Incorrect Username or Password");
                 return "login";
-            }
+            } 
         
         
         }
@@ -51,11 +52,21 @@ public class AuthController {
             return "error";
         }
 
+        //verified account?
         
+        int verified = userRespository.isVerified(getEmailInDatabase);
+        if (verified != 1) {
+            model.addAttribute("error", "Account is not yet verified");
+            return "login";
+        } 
 
+        User user = userRepository.getUserDetails(getEmailInDatabase);
 
+        session.setAttribute("user", user);
+        session.setAttribute("token", token);
+        session.setAttribute("authenticated", true);
 
-        return "";
+        return "redirect:/app/dashboard";        
 
     }
 
