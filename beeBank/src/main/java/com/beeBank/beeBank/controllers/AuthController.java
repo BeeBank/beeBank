@@ -70,6 +70,13 @@ public class AuthController {
 
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session, RedirectAttributes redirectAttributes) {
+        session.invalidate();
+        redirectAttributes.addFlashAttribute("logged_out", "logged out successfully");
+        return "redirect:/login";
+    }
+
 
     
 }
