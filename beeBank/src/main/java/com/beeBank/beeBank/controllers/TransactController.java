@@ -1,5 +1,7 @@
 package com.beeBank.beeBank.controllers;
 
+import java.time.LocalDateTime;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.beeBank.beeBank.repository.AccountRepository;
+import com.beeBank.beeBank.repository.PaymentRepository;
 
 @Controller
 @RequestMapping("/transact")
@@ -19,6 +22,9 @@ public class TransactController {
 
     @Autowired
 private AccountRepository accountRepository;
+
+@Autowired
+private PaymentRepository paymentRepository;
     User user;
 
     double currentBalance;
@@ -140,6 +146,57 @@ private AccountRepository accountRepository;
 
         redirectAttributes.addFlashAttribute("success", "Withdraw successful.");
         return "redirect:/app/dashboard";
+    }
+
+    @PostMapping("/payment")
+    public String payment(@RequestParam("beneficiary")String beneficiary,
+    @RequestParam("account_number")String account_number,
+    @RequestParam("account_id")String account_id,
+        @RequestParam("reference")String reference,
+        @RequestParam("payment_amount")String payment_amount,
+        HttpSession session,
+        RedirectAttributes redirectAttributes) {
+
+            if(beneficiary.isEmpty() || account_number.isEmpty() || account_id.isEmpty() || payment_amount.isEmpty()) {
+                redirectAttributes.addFlashAttribute("error", "Beneficiary, account number, account paying from and payment amount cannot be empty");
+                return "redirect:/app/dashboard";
+            }
+
+            int accountID = Integer.parseInt(account_id);
+            double paymentAmount = Double.parseDouble(payment_amount);
+
+            if (paymentAmount == 0) {
+                redirectAttributes.addFlashAttribute("error", "Payment cannot be 0.");
+                return "redirect:/app/dashboard";
+            }
+
+            user = (User) session.getAttribute("user");
+
+            currentBalance = accountRepository.getAccountBalance(user.getUser_id(), accountID);
+
+            if (currentBalance < paymentAmount) {
+                redirectAttributes.addFlashAttribute("error", "You have insufficient funds to complete payment.");
+                return "redirect:/app/dashboard";
+            }
+
+            newBalance = currentBalance - paymentAmount;
+
+            String reasonCode = "Payment processed.";
+            LocalDateTime  currentDateTime = LocalDateTime.now();
+            paymentRepository.makePayment(accountID, beneficiary, account_number, paymentAmount, reference, "success", reasonCode, currentDateTime);
+        
+
+            //update account paying from
+            accountRepository.changeAccountBalanceById(newBalance, accountID);
+
+            redirectAttributes.addFlashAttribute("success", "Payment processed.");
+            return "redirect:/app/dashboard";
+            
+
+            
+
+
+        return "";
     }
     
 }
