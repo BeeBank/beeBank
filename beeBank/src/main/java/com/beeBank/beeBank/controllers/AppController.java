@@ -1,11 +1,13 @@
 package com.beeBank.beeBank.controllers;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +27,7 @@ public class AppController {
         //this is where you get details of the logged in user
 
         User user = (User) session.getAttribute("user");
+
 
         //get the accounts of the user
         List<Account> getUserAccounts = accountRepository.getUserAccountsById(user.getUser_id());

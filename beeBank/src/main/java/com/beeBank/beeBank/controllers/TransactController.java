@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.beeBank.beeBank.repository.AccountRepository;
 import com.beeBank.beeBank.repository.PaymentRepository;
+import com.beeBank.beeBank.repository.TransactRepository;
 
 @Controller
 @RequestMapping("/transact")
@@ -25,10 +26,16 @@ private AccountRepository accountRepository;
 
 @Autowired
 private PaymentRepository paymentRepository;
+
+@Autowired
+private TransactRepository transactRepository;
+
+
     User user;
 
     double currentBalance;
     double newBalance;
+    LocalDateTime  currentDateTime = LocalDateTime.now();
 
 
     @PostMapping("/deposit")
@@ -45,14 +52,17 @@ private PaymentRepository paymentRepository;
 
 
 
-            if(depositAmountValue == 0) {
-                redirectAttributes.addFlashAttribute("error", "Deposit Ammount Cannot Be 0");
+            if(depositAmountValue <= 0) {
+                redirectAttributes.addFlashAttribute("error", "Deposit Amount Cannot Be 0 or less than 0");
                 return "redirect:/app/dashboard";
             }
 
             currentBalance = accountRepository.getAccountBalance(user.getUser_id(), acc_id);
             newBalance = currentBalance + depositAmountValue;
             accountRepository.changeAccountBalanceById(newBalance, acc_id);
+
+            transactRepository.logTransaction(acc_id, "deposit", depositAmountValue, "online", "success", "Deposit transaction successful", currentDateTime);
+
             redirectAttributes.addFlashAttribute("success", "Amount deposited successfully");
             return "redirect:/app/dashboard";
 
@@ -81,14 +91,22 @@ private PaymentRepository paymentRepository;
 
         }
 
-        if(transferAmount == 0) {
-            redirectAttributes.addFlashAttribute("error", "Amount needs to be > 0");
+        if(transferAmount <= 0) {
+            redirectAttributes.addFlashAttribute("error", "Amount needs to be greater than 0");
             return "redirect:/app/dashboard";
         }
+
 
         //gets current logged in user
        user = (User)session.getAttribute("user");
        double currentBalanceOfAccountTransferringFrom = accountRepository.getAccountBalance(user.getUser_id(), transferFromId);
+
+
+       if (currentBalanceOfAccountTransferringFrom < transferAmount) {
+        transactRepository.logTransaction(transferFromId, "transfer", transferAmount, "online", "failed", "insufficient funds", currentDateTime);
+        redirectAttributes.addFlashAttribute("error", "You have insufficient funds to transfer.");
+        return "redirect:/app/dashboard";
+    }
 
        double currentBalanceOfAccountTransferringTo = accountRepository.getAccountBalance(user.getUser_id(), transferToId);
 
@@ -100,6 +118,10 @@ private PaymentRepository paymentRepository;
        accountRepository.changeAccountBalanceById(newBalanceOfAccountTransferringFrom, transferFromId);
        //change balance of acct transferring to
        accountRepository.changeAccountBalanceById(newBalanceOfAccountTransferringTo, transferToId);
+
+
+       transactRepository.logTransaction(transferFromId, "transfer", transferAmount, "online", "success", "Transfer transaction successful", currentDateTime);
+
 
        
 
@@ -134,6 +156,14 @@ private PaymentRepository paymentRepository;
 
         currentBalance = accountRepository.getAccountBalance(user.getUser_id(), account_id);
 
+
+        if (currentBalance < withdrawal_amount) {
+            transactRepository.logTransaction(account_id, "Withdrawal", withdrawal_amount, "online", "failed", "insufficient funds", currentDateTime);
+            redirectAttributes.addFlashAttribute("error", "You have insufficient funds to withdraw.");
+            return "redirect:/app/dashboard";
+        }
+
+
         newBalance = currentBalance - withdrawal_amount;
 
         if (withdrawal_amount > currentBalance) {
@@ -143,6 +173,9 @@ private PaymentRepository paymentRepository;
 
         //update acct balance
         accountRepository.changeAccountBalanceById(newBalance, account_id);
+
+        transactRepository.logTransaction(account_id, "Withdrawal", withdrawal_amount, "online", "success", "Withdrawal transaction successful", currentDateTime);
+
 
         redirectAttributes.addFlashAttribute("success", "Withdraw successful.");
         return "redirect:/app/dashboard";
@@ -175,6 +208,13 @@ private PaymentRepository paymentRepository;
             currentBalance = accountRepository.getAccountBalance(user.getUser_id(), accountID);
 
             if (currentBalance < paymentAmount) {
+
+                String reasonCode = "Could not process payment due to insufficient funds.";
+                
+                paymentRepository.makePayment(accountID, beneficiary, account_number, paymentAmount, reference, "failed", reasonCode, currentDateTime);
+
+                transactRepository.logTransaction(accountID, "Payment", paymentAmount, "online", "failed", "insufficient funds", currentDateTime);
+
                 redirectAttributes.addFlashAttribute("error", "You have insufficient funds to complete payment.");
                 return "redirect:/app/dashboard";
             }
@@ -182,21 +222,20 @@ private PaymentRepository paymentRepository;
             newBalance = currentBalance - paymentAmount;
 
             String reasonCode = "Payment processed.";
-            LocalDateTime  currentDateTime = LocalDateTime.now();
             paymentRepository.makePayment(accountID, beneficiary, account_number, paymentAmount, reference, "success", reasonCode, currentDateTime);
         
 
             //update account paying from
             accountRepository.changeAccountBalanceById(newBalance, accountID);
 
+            transactRepository.logTransaction(accountID, "Payment", paymentAmount, "online", "success", "Payment successful", currentDateTime);
+
+
             redirectAttributes.addFlashAttribute("success", "Payment processed.");
             return "redirect:/app/dashboard";
             
 
-            
-
-
-        return "";
+         
     }
     
 }
