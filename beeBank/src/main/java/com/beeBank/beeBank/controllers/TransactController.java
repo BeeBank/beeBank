@@ -60,8 +60,8 @@ private AccountRepository accountRepository;
     HttpSession session,
     RedirectAttributes redirectAttributes) {
 
-        if (transfer_from.isEmpty() || transfer_amount.isEmpty()) {
-            redirectAttributes.addFlashAttribute("error", "The account transferring from and the amount cannot be empty");
+        if (transfer_from.isEmpty() || transfer_amount.isEmpty() || transfer_to.isEmpty()) {
+            redirectAttributes.addFlashAttribute("error", "The account transferring from/to and the amount cannot be empty");
             return "redirect:/app/dashboard";
         }
 
@@ -82,23 +82,64 @@ private AccountRepository accountRepository;
 
         //gets current logged in user
        user = (User)session.getAttribute("user");
-       currentBalance = accountRepository.getAccountBalance(user.getUser_id(), transferFromId);
+       double currentBalanceOfAccountTransferringFrom = accountRepository.getAccountBalance(user.getUser_id(), transferFromId);
+
+       double currentBalanceOfAccountTransferringTo = accountRepository.getAccountBalance(user.getUser_id(), transferToId);
 
        //set new balance:
-       newBalance = currentBalance - transferAmount;
-       double newBalanceOfAccountTransferringTo = currentBalance + transferAmount;
+       double newBalanceOfAccountTransferringFrom = currentBalanceOfAccountTransferringFrom - transferAmount;
+
+       double newBalanceOfAccountTransferringTo = currentBalanceOfAccountTransferringTo + transferAmount;
        //change balance of acct transferring from
-       accountRepository.changeAccountBalanceById(newBalance, transferFromId);
+       accountRepository.changeAccountBalanceById(newBalanceOfAccountTransferringFrom, transferFromId);
        //change balance of acct transferring to
        accountRepository.changeAccountBalanceById(newBalanceOfAccountTransferringTo, transferToId);
 
        
 
 
+       redirectAttributes.addFlashAttribute("success", "Successfully transferred.");
+       return "redirect:/app/dashboard";
+
+    }
+
+    @PostMapping("/withdraw")
+    public String withdraw(@RequestParam("withdrawal_amount")String withdrawalAmount,
+    @RequestParam("account_id") String accountID, 
+    HttpSession session,
+    RedirectAttributes redirectAttributes) {
+
+        if(withdrawalAmount.isEmpty() || accountID.isEmpty()) {
+            redirectAttributes.addFlashAttribute("error", "Withdrawal amount and account cannot be empty");
+            return "redirect:/app/dashboard";
+        }
+
+        double withdrawal_amount = Double.parseDouble(withdrawalAmount);
+        int account_id = Integer.parseInt(accountID);
+
+        if (withdrawal_amount == 0) {
+            redirectAttributes.addFlashAttribute("error", "Withdrawal amount cannot be 0");
+            return "redirect:/app/dashboard";
+        }
 
 
-        return "";
 
+        user = (User) session.getAttribute("user");
+
+        currentBalance = accountRepository.getAccountBalance(user.getUser_id(), account_id);
+
+        newBalance = currentBalance - withdrawal_amount;
+
+        if (withdrawal_amount > currentBalance) {
+            redirectAttributes.addFlashAttribute("error", "Withdrawal amount cannot be greater than current balance.");
+            return "redirect:/app/dashboard";
+        }
+
+        //update acct balance
+        accountRepository.changeAccountBalanceById(newBalance, account_id);
+
+        redirectAttributes.addFlashAttribute("success", "Withdraw successful.");
+        return "redirect:/app/dashboard";
     }
     
 }
