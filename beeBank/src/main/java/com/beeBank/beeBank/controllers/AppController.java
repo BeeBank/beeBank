@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transaction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,14 @@ import com.beeBank.beeBank.repository.AccountRepository;
 public class AppController {
     @Autowired
     private AccountRepository accountRepository;
+    
+    @Autowired
+    private PaymentHistoryRepository paymentHistoryRepository;
+
+    @Autowired
+    private TransactHistoryRepository transactHistoryRepository;
+
+    User user;
 
     @GetMapping("/dashboard")
     public ModelAndView getDashboard(HttpSession session) {
@@ -41,5 +50,36 @@ public class AppController {
 
         return getDashBoardPage;
     }
+
+    @GetMapping("/payment_history")
+    public ModelAndView getPaymentHistory(HttpSession session){
+        // Set View:
+        ModelAndView getPaymentHistoryPage= new ModelAndView("PaymentHistory");
+
+        //Get Logged in User:
+        user = (User) session.getAttribute("user");
+
+        //Get Payment History/Records:
+        List<PaymentHistory> userPaymentHistory = PaymentHistoryRepository.getPaymentRecordsById(user.getUser_id());
+
+        getPaymentHistoryPage.addObject("payment_history", userPaymentHistory);
+
+        return getPaymentHistoryPage;
+    } 
+    @GetMapping("/transact_history")
+    public ModelAndView getTransactHistory(HttpSession session){
+        // Set View:
+        ModelAndView getTransactHistoryPage= new ModelAndView("transactHistory");
+
+        //Get Logged in User:
+        user = (User) session.getAttribute("user");
+
+        //Get Transact History/Records:
+        List<TransactionHistory> userTransactHistory = transactHistoryRepository.getTransactionRecordById(user.getUser_id());
+
+        getTransactHistoryPage.addObject("transact_history", userTransactHistory);
+
+        return getTransactHistoryPage;
+    } 
     
 }

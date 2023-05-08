@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -22,4 +24,10 @@ public class AppConfig extends WebMvcConfigurationSupport{
         return jspViewResolver;
     }
     // End of View Resolver.
+
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry){
+    registry.addInterceptor(new AppInterceptor()).addPathPatterns("/app/*");    
+    }
+    //End of interceptor registry 
 }
