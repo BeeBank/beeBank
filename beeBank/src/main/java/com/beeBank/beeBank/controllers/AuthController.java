@@ -1,5 +1,7 @@
 package com.beeBank.beeBank.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
@@ -11,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AuthController {
     @Autowired
-    private UserRepository userRepository
+    private UserRepository userRepository;
 
     @GetMapping("/login")
     public ModelAndView getLogin() {
@@ -21,7 +23,7 @@ public class AuthController {
         String token = Token.generateToken();
 
         // Send token to view:
-        getLoginPage.addObject("token", token)
+        getLoginPage.addObject("token", token);
         getLoginPage.addObject("PageTitle", "Login");
         return getLoginPage;
 
