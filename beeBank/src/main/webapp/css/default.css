@@ -17,12 +17,13 @@ body{
     top: 300px;
 }
 #text-card h1{
-    margin: 10px;
+    margin: 0px;
     font-size: 50px;
 }
 .btn-primary{
     color: rgb(255, 255, 255);
     background-color: #fcca00;
+    box-shadow: 0px 3px 6px rgb(160, 160, 160)
 }
 .btn-primary:hover{
     color: #fcca00;
@@ -31,4 +32,8 @@ body{
 }
 .card .form-control{
     box-shadow: 0px 3px 6px rgb(160, 160, 160);
+}
+
+.display-name{
+    margin-left: 100px;
 }
