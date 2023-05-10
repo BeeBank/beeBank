@@ -14,6 +14,8 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = {"src/main/java/com/beeBank/beeBank"})
 public class AppConfig extends WebMvcConfigurationSupport{
     
+    
+
     @Bean
     public InternalResourceViewResolver viewResolver(){
         InternalResourceViewResolver jspViewResolver = new InternalResourceViewResolver();
