@@ -14,7 +14,11 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = {"src/main/java/com/beeBank/beeBank"})
 public class AppConfig extends WebMvcConfigurationSupport{
     
-    
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry){
+       registry.addResourcehandler("css/**","images/**", "js/**")
+                .addResourceLocations("classpath:/static/css/","classpath:/static/images/","classpath:/static/js/");
+    }
 
     @Bean
     public InternalResourceViewResolver viewResolver(){
