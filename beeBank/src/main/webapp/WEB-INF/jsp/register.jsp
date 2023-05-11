@@ -1,3 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri"http://wwww.springframework.org/tags/form" %>
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,19 +27,21 @@
             <!--End form Header-->
 
             <!--Form-->
-            <form action="" class="reg-form">
+            <form:form action="/register" class="reg-form" modelAttribute="registerUser"> 
                 <!--Row-->
                 <div class="row">
 
                  <!--Form Group-->
                  <div class="form-group col">
-                    <input type="text" name="first_name" class="form-control form-control-lg" placeholder="Enter First Name"/>
+                    <form:input type="text" path="first_name" class="form-control form-control-lg" placeholder="Enter First Name"/>
+                    <form:errors path="first_name" class="text-white bg-danger"/>
                  </div>
                  <!--End of form group-->
 
                  <!--Form Group-->
                  <div class="form-group col">
-                    <input type="text" name="last_name" class="form-control form-control-lg" placeholder="Enter Last Name"/>
+                    <form:input type="text" path="last_name" class="form-control form-control-lg" placeholder="Enter Last Name"/>
+                    <form:erros path="last_name" class="text-white bg-danger"/>
                  </div>
                  <!--End of form group-->
                 </div>
@@ -43,7 +49,9 @@
 
                 <!--Form Group-->
                 <div class="form-group col-15">
-                    <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter Email"/>
+                    <form:input type="email" path="email" class="form-control form-control-lg" placeholder="Enter Email"/>
+                    <form:erros path="email" class="text-white bg-danger"/>
+
                  </div>
                  <!--End of form group-->
 
@@ -52,13 +60,15 @@
 
                     <!--Form Group-->
                     <div class="form-group col">
-                       <input type="password" name="password" class="form-control form-control-lg" placeholder="Enter Password"/>
+                       <form:input type="password" path="password" class="form-control form-control-lg" placeholder="Enter Password"/>
+                       <form:errors path="password" class="text-while bg-danger"/>
                     </div>
                     <!--End of form group-->
    
                     <!--Form Group-->
                     <div class="form-group col">
                        <input type="password" name="confirm_password" class="form-control form-control-lg" placeholder="Confirm Password"/>
+                       <small class="text-while bg-danger">${confirm_pass}</small>
                     </div>
                     <!--End of form group-->
                    </div>
@@ -69,7 +79,7 @@
                         <button class="btn btn-lg btn-primary col-3 border-0">Register</button>
                     </div>
                     <!--End of form group-->
-            </form>
+            </form:form>
             <!--Card Text-->
             <p class="card-text">
                 Already have an account? <span class="ms-2 text-warning"><a href="/login" class="btn bt-sm text-warning">Sign In</a></span>

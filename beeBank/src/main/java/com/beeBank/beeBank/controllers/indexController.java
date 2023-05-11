@@ -35,5 +35,12 @@ public class indexController {
         System.out.println("In Error Page Controller");
         return getErrorPage;
     } 
+    @GetMapping("/verify")
+    public ModelAndView getVerify(){
+        ModelAndView getVerifyPage = new ModelAndView("login");
+        getVerifyPage.addObject("PageTitle", "Errors");
+        System.out.println("In Error Page Controller");
+        return getVerifyPage;
+    } 
     
 }
