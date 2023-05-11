@@ -8,6 +8,8 @@ public class HTML{
             // Need URL where site is launch
         String url = "?token=" + token + "&code" + code;
 
+
+        //Edit later 17
         String emailTemplate = "<!DOCTYPE html>
         <html lang="en">
         <head>
