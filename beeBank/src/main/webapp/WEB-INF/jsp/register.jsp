@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
+    <link rel="stylesheet" href="css/default.css">
+    <title>Register</title>
+</head>
+<body class="d-flex align-items-center justify-context-center">
+    <!--Registration Card-->
+    <div class="card registration-form-card col-6 mx-auto">
+        <!--Card Body-->
+        <div class="card-body">
+            <!--Form Header-->
+            <h1 class="form-header card-title mb-3">
+                <i class="fa fa-edit"></i> Register
+            </h1>
+            <!--End form Header-->
+
+            <!--Form-->
+            <form action="" class="reg-form">
+                <!--Row-->
+                <div class="row">
+
+                 <!--Form Group-->
+                 <div class="form-group col">
+                    <input type="text" name="first_name" class="form-control form-control-lg" placeholder="Enter First Name"/>
+                 </div>
+                 <!--End of form group-->
+
+                 <!--Form Group-->
+                 <div class="form-group col">
+                    <input type="text" name="last_name" class="form-control form-control-lg" placeholder="Enter Last Name"/>
+                 </div>
+                 <!--End of form group-->
+                </div>
+                <!--End of row-->
+
+                <!--Form Group-->
+                <div class="form-group col-15">
+                    <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter Email"/>
+                 </div>
+                 <!--End of form group-->
+
+                  <!--Row-->
+                <div class="row">
+
+                    <!--Form Group-->
+                    <div class="form-group col">
+                       <input type="password" name="password" class="form-control form-control-lg" placeholder="Enter Password"/>
+                    </div>
+                    <!--End of form group-->
+   
+                    <!--Form Group-->
+                    <div class="form-group col">
+                       <input type="password" name="confirm_password" class="form-control form-control-lg" placeholder="Confirm Password"/>
+                    </div>
+                    <!--End of form group-->
+                   </div>
+                   <!--End of row-->
+
+                   <!--Form Group-->
+                    <div class="form-group col-15">
+                        <button class="btn btn-lg btn-primary col-3 border-0">Register</button>
+                    </div>
+                    <!--End of form group-->
+            </form>
+            <!--Card Text-->
+            <p class="card-text">
+                Already have an account? <span class="ms-2 text-warning"><a href="/login" class="btn bt-sm text-warning">Sign In</a></span>
+            </p>
+            <!--End card text-->
+
+            <!-- Back Button To Landing Page-->
+            <small class="text-warning">
+                <i class="fa fa-arrow-left fa-beat"></i> <a href="/" class="btn btn-sm">Back</a>
+            </small>
+            <!-- End Back Button To Landing Page-->
+
+
+            <!--End Form-->
+        </div>
+    </div>
+    
+</body>
+</html>
