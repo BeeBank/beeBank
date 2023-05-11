@@ -16,24 +16,24 @@ public class indexController {
     }
     @GetMapping("/login")
     public ModelAndView getLogin(){
-        ModelAndView getIndexPage = new ModelAndView("login");
+        ModelAndView getLoginPage = new ModelAndView("login");
         System.out.println("In Login Page Controller");
-        getIndexPage.addObject("PageTitle", "Login");
+        getLoginPage.addObject("PageTitle", "Login");
         return getLoginPage;
     }
     @GetMapping("/register")
     public ModelAndView getRegister(){
-        ModelAndView getIndexPage = new ModelAndView("register");
+        ModelAndView getRegisterPage = new ModelAndView("register");
         System.out.println("In Register Page Controller");
-        getIndexPage.addObject("PageTitle", "Register");
+        getRegisterPage.addObject("PageTitle", "Register");
         return getRegisterPage;
     }
     @GetMapping("/error")
     public ModelAndView getError(){
-        ModelAndView getIndexPage = new ModelAndView("error");
-        System.out.println("In Register Page Controller");
-        getIndexPage.addObject("PageTitle", "Errors");
+        ModelAndView getErrorPage = new ModelAndView("error");
+        getErrorPage.addObject("PageTitle", "Errors");
+        System.out.println("In Error Page Controller");
         return getErrorPage;
-    }
+    } 
     
 }
