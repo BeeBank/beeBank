@@ -32,7 +32,7 @@
                     <!--End Card Text-->
                     <hr>
                     <!--Back to login-->
-                    <a href="login.html" class="btn btn-sm btm-danger bg-danger text-white">
+                    <a href="/login" class="btn btn-sm btm-danger bg-danger text-white">
                         <i class="fa fa-arrow-left me-1"></i> Back
                     </a>
                     <!--End Back to login-->
