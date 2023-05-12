@@ -21,6 +21,14 @@
                 <i class="fa fa-user"></i> Login
             </h1>
             <!--End form Header-->
+            
+            <!-- Display Message -->
+            <c:if test="${requestScope.passwordMisMatch != null}">
+                <div class="alert alert-danger text-center border border-danger">
+                    <b>${requestScope.passwordMisMatch}</b>
+                </div>
+            </c:if>
+            <!-- End of Display Message -->
 
             <!--Login Form-->
             <form action="" class="reg-form">

@@ -36,7 +36,7 @@
 
             <!-- Display Message -->
             <c:if test="${requestScope.success != null}">
-                <div class="alert alert-success text-center border border-danger">
+                <div class="alert alert-success text-center border border-success">
                     <b>${requestScope.success}</b>
                 </div>
             </c:if>

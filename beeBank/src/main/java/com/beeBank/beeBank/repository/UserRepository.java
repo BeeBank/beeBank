@@ -20,4 +20,13 @@ public interface UserRepository extends CrudRepository<User, Integer>{
                     @Param("password") String password,
                     @Param("token") String token,
                     @Param("code") int code);
+
+@Modifying
+@Query(value = "UPDATE users SET token =null, code=null, verified=1, verified_at=NOW(), updated_at=NOW() WHERE " +
+        "token= :token AND code= :code", nativeQuery = true)
+@Transactional
+void verifyAccount(@Param("token")String token, @Param("code")String code);
+
+@Query(value = "SELECT token FROM users WHERE token = :token" , nativeQuery = true )
+String checkToken(@Param("token")String token);
 }

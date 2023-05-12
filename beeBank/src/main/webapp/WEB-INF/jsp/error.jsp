@@ -26,8 +26,13 @@
                 <div class="card-body">
                     <!--Card Text-->
                     <p class="card text bg-transparent border-0">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Adipisci laudantium assumenda doloribus harum asperiores excepturi, ea quia? Cupiditate, molestias culpa.
+                        <!-- Display Message -->
+                        <c:if test="${requestScope.error != null}">
+                            <div class="alert alert-danger text-center border border-danger">
+                                <b>${requestScope.error}</b>
+                            </div>
+                        </c:if>
+                        <!-- End of Display Message -->
                     </p>
                     <!--End Card Text-->
                     <hr>
