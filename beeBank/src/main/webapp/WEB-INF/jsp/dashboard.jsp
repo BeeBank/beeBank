@@ -27,6 +27,26 @@
 
         <c:import url="components/add_account_offcanvas.jsp"/>
 
+<!--Container-->
+<div class="container">
+                       <!-- Display Message -->
+                       <c:if test="${success != null}">
+                        <div class="alert alert-info text-center border border-info">
+                            <b>${success}</b>
+                        </div>
+                    </c:if>
+                    <!-- End of Display Message -->
+
+             <!-- Display Message -->
+            <c:if test="${error != null}">
+                <div class="alert alert-danger text-center border border-danger">
+                    <b>${error}</b>
+                </div>
+            </c:if>
+            <!-- End of Display Message -->
+        </div>
+<!--End of Container-->
+
         <c:choose>
             <c:when test="${fn:length(userAccounts) > 0}">
                 <!--when theres more than 0 accts -->

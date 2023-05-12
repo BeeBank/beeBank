@@ -7,7 +7,7 @@
         <!--Card Body-->
         <div class="card-body">
             <!--Withdrawal Form -->
-            <form action="" class="withdrawal-form">
+            <form action="/transact/withdraw"method="POST" class="withdrawal-form">
                 <!--Form Group-->
             <div class="form-group mb-2">
                 <label for="">Enter Withdrawal Amount</label>
@@ -15,20 +15,28 @@
             </div>
             <!--End Form Group-->
 
-            <!--Form Group-->
-            <div class="form-group">
-                <label for="">Select Account</label>
-                <!--Start select account-->
-            <select name="account_id" class="form-control" id="">
-                <option value="">-- Select Account --</option>
-            </select>
-            <!--End select account-->
-            </div>
-            <!--End form Group-->
+
+  <!--Form Group-->
+  <div class="form-group">
+    <label for="">Select Account</label>
+    <!--Start select account-->
+<select name="account_id" class="form-control" id="">
+    <option value="">-- Select Account --</option>
+    <c:if test="${userAccounts != null}">
+        <c:forEach items ="${userAccounts}" var="selectAccount">
+            <option value="${selectAccount.account_id}">${selectAccount.account_name}</option>
+    </c:forEach>
+
+    </c:if>
+</select>
+<!--End select account-->
+</div>
+<!--End form Group-->
+
 
             <!--Form Group-->
-            <div class="form-group my-1">
-                <button id="transact-btn" class="btn btn-md btn-primary">Withdrawal</button>
+            <div class="form-group my-2">
+                <button id="" class="btn btn-md transact-btn">Withdrawal</button>
             </div>
             <!--End Form Group-->
             </form>

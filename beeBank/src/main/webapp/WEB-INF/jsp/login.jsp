@@ -30,6 +30,13 @@
             </c:if>
             <!-- End of Display Message -->
 
+                                    <!-- Display Message -->
+                                    <c:if test="${requestScope.success != null}">
+                                        <div class="alert alert-success text-center border border-success">
+                                            <b>${requestScope.success}</b>
+                                        </div>
+                                    </c:if>
+                                    <!-- End of Display Message -->
                         <!-- Display Message -->
                         <c:if test="${requestScope.error != null}">
                             <div class="alert alert-danger text-center border border-danger">
@@ -37,6 +44,13 @@
                             </div>
                         </c:if>
                         <!-- End of Display Message -->
+                                                <!-- Display Message -->
+                                                <c:if test="${logged_out != null}">
+                                                    <div class="alert alert-info text-center border border-info">
+                                                        <b>${logged_out}</b>
+                                                    </div>
+                                                </c:if>
+                                                <!-- End of Display Message -->
 
             <!--Login Form-->
             <form action="/login" method = "POST" class="login-form">

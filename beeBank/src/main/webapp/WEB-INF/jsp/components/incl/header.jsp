@@ -28,7 +28,7 @@
     </div>
     <!--End Display Name-->
     <!--Logout Button-->
-    <a href="" class="btn btn-sm ms-2 my-1 text-white">
+    <a href="/logout" class="btn btn-sm ms-2 my-1 text-white">
         <i class="fa fa-sign-out me-2 text-white"></i> Sign Out
     </a>
     <!--Logout Button-->
