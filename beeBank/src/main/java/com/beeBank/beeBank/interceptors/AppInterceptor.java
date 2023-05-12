@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.beeBank.beeBank.models.User;
+
 @Component
 public class AppInterceptor implements HandlerInterceptor{
 
@@ -18,7 +20,7 @@ public class AppInterceptor implements HandlerInterceptor{
         // TODO: CHECK REQUEST URI:
         if(request.getRequestURI().startsWith("/app")){
             //Get Session:
-            HttpSession session .request.getSession();
+            HttpSession session = request.getSession();
 
             //Get Token Stored in Session:
             String token = (String) session.getAttribute("token");

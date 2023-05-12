@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.beeBank.beeBank.models.User;
 import com.beeBank.beeBank.repository.AccountRepository;
 import com.beeBank.beeBank.repository.PaymentRepository;
 import com.beeBank.beeBank.repository.TransactRepository;

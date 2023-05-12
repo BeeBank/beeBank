@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.beeBank.beeBank.helpers.Token;
+import com.beeBank.beeBank.models.User;
+import com.beeBank.beeBank.repository.UserRepository;
+
 @Controller
 public class AuthController {
     @Autowired

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.beeBank.beeBank.helpers.GenAccountNumber;
+import com.beeBank.beeBank.models.User;
 import com.beeBank.beeBank.repository.AccountRepository;
 
 @Controller

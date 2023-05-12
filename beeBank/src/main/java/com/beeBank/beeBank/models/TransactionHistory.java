@@ -1,5 +1,7 @@
 package com.beeBank.beeBank.models;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;

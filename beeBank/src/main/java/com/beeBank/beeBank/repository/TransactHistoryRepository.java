@@ -1,7 +1,13 @@
 package com.beeBank.beeBank.repository;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.web.PageableDefault;
+
+import com.beeBank.beeBank.models.TransactionHistory;
 
 public interface TransactHistoryRepository extends CrudRepository <TransactionHistory, Integer> {
 

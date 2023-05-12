@@ -13,7 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.beeBank.beeBank.models.Account;
+import com.beeBank.beeBank.models.PaymentHistory;
+import com.beeBank.beeBank.models.TransactionHistory;
+import com.beeBank.beeBank.models.User;
 import com.beeBank.beeBank.repository.AccountRepository;
+import com.beeBank.beeBank.repository.PaymentHistoryRepository;
+import com.beeBank.beeBank.repository.TransactHistoryRepository;
 
 @Controller
 @RequestMapping("/app")
@@ -60,7 +65,7 @@ public class AppController {
         user = (User) session.getAttribute("user");
 
         //Get Payment History/Records:
-        List<PaymentHistory> userPaymentHistory = PaymentHistoryRepository.getPaymentRecordsById(user.getUser_id());
+        List<PaymentHistory> userPaymentHistory = paymentHistoryRepository.getPaymentRecordsById(user.getUser_id());
 
         getPaymentHistoryPage.addObject("payment_history", userPaymentHistory);
 

@@ -43,8 +43,7 @@ public class RegisterController {
                                 @RequestParam("last_name") String last_name,
                                 @RequestParam("email") String email,
                                 @RequestParam("password") String password,
-                                @RequestParam("confirm_password") String confirm_passord) throws MessagingException
-                                {
+                                @RequestParam("confirm_password") String confirm_passord) throws MessagingException  {
         ModelAndView registrationPage = new ModelAndView("register");
 
         //Check for errors:
@@ -53,28 +52,28 @@ public class RegisterController {
             return registrationPage;
         }
         
-        // TODO: CHECK FOR PASSWORD MATCH
+        // PASSWORD MATCH
         if(!password.equals(confirm_passord)){
             registrationPage.addObject("passwprdMisMatch", "passwords do not match");
             return registrationPage;
         }
-        // TODO: GET TOKEN STRING:
+        // GET TOKEN STRING:
         String token = Token.generateToken();
-        // TODO: GENERATE RANDOM CODE
+        // GENERATE RANDOM CODE
         Random rand = new Random();
         int bound = 123;
         int code = bound * rand.nextInt(bound);
         
 
-        // TODO: GET EMAIL HTML BODY:
+        //  GET EMAIL HTML BODY:
         String emailBody = HTML.htmlEmailTemplate(token,code); 
-        // TODO: HASH PASSWORD:
+        //  HASH PASSWORD:
         String hashed_password = BCrypt.hashpw(password, BCrypt.gensalt());
-        // TODO: REGISTER USER:
+        //  REGISTER USER:
     userRepository.regiserUser(first_name, last_name, email, hashed_password, token, code);
-        // TODO: SEND EMAIL NOTIFICATION:
+        //  SEND EMAIL NOTIFICATION:
         MailMessenger.htmlEmailMessenger("no-reply@somecompany.com", email, "Verify Account", emailBody);
-        // TODO: RETURN TO REGISTER PAGE:
+        //  RETURN TO REGISTER PAGE:
         String successMessage = "Account Registered Successfully, Please Check Your Email and Verify Account";
         registrationPage.addObject("success", successMessage);
 
