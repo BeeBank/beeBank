@@ -20,13 +20,8 @@ public class indexController {
         System.out.println("In index Controller");
         return getIndexPage;
     }
-    @GetMapping("/login")
-    public ModelAndView getLogin(){
-        ModelAndView getLoginPage = new ModelAndView("login");
-        System.out.println("In Login Page Controller");
-        getLoginPage.addObject("PageTitle", "Login");
-        return getLoginPage;
-    }
+
+    
     @GetMapping("/register")
     public ModelAndView getRegister(){
         ModelAndView getRegisterPage = new ModelAndView("register");

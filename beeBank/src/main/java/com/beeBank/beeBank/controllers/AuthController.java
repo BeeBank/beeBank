@@ -5,10 +5,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.beeBank.beeBank.helpers.Token;
 import com.beeBank.beeBank.models.User;
@@ -63,7 +65,7 @@ public class AuthController {
 
         //verified account?
         
-        int verified = userRespository.isVerified(getEmailInDatabase);
+        int verified = userRepository.isVerified(getEmailInDatabase);
         if (verified != 1) {
             model.addAttribute("error", "Account is not yet verified");
             return "login";

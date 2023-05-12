@@ -30,10 +30,18 @@
             </c:if>
             <!-- End of Display Message -->
 
+                        <!-- Display Message -->
+                        <c:if test="${requestScope.error != null}">
+                            <div class="alert alert-danger text-center border border-danger">
+                                <b>${requestScope.error}</b>
+                            </div>
+                        </c:if>
+                        <!-- End of Display Message -->
+
             <!--Login Form-->
-            <form action="" class="reg-form">
+            <form action="/login" method = "POST" class="login-form">
                 <!--Form Group-->
-                <div class="form-group col-15">
+                <div class="form-group col">
                     <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter Email"/>
                  </div>
                  <!--End of form group-->
@@ -43,10 +51,16 @@
 
                     <!--Form Group-->
                     <div class="form-group col">
-                       <input type="password" name="password" class="form-control form-control-lg" placeholder="Enter Password"/>
-                    </div>
-                    <!--End of form group-->
+                        <input type="password" name="password" class="form-control form-control-lg" placeholder="Enter Password"/>
+                     </div>
+                     <!--End of form group-->
    
+                                         <!--Form Group-->
+                    <div class="form-group col">
+                        <input type="hidden" name="_token" value="${token}"/>
+                     </div>
+                     <!--End of form group-->
+    
                    </div>
                    <!--End of row-->
 

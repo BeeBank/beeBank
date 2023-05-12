@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.web.PageableDefault;
+import org.springframework.stereotype.Repository;
 
 import com.beeBank.beeBank.models.TransactionHistory;
+
+@Repository
 
 public interface TransactHistoryRepository extends CrudRepository <TransactionHistory, Integer> {
 

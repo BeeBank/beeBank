@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.jasper.compiler.Node.UseBean;
+// import org.apache.jasper.compiler.Node.UseBean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,7 +17,7 @@ public class AppInterceptor implements HandlerInterceptor{
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
         System.out.println("In Pre Handle Interceptor Method");
-        // TODO: CHECK REQUEST URI:
+        // CHECK REQUEST URI:
         if(request.getRequestURI().startsWith("/app")){
             //Get Session:
             HttpSession session = request.getSession();
@@ -32,7 +32,7 @@ public class AppInterceptor implements HandlerInterceptor{
             //check if authenticated
             // boolean isAuthenticated=(boolean)session.getAttribute("authenticated");
 
-            //TODO: Validate session attributes/ objects:
+            //Validate session attributes/ objects:
             if(token == null || user == null){
                 response.sendRedirect("/login");
                 return false;
