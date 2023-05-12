@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -12,6 +14,12 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = {"src/main/java/com/beeBank/beeBank"})
 public class AppConfig extends WebMvcConfigurationSupport{
     
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry){
+       registry.addResourcehandler("css/**","images/**", "js/**")
+                .addResourceLocations("classpath:/static/css/","classpath:/static/images/","classpath:/static/js/");
+    }
+
     @Bean
     public InternalResourceViewResolver viewResolver(){
         InternalResourceViewResolver jspViewResolver = new InternalResourceViewResolver();
@@ -22,4 +30,10 @@ public class AppConfig extends WebMvcConfigurationSupport{
         return jspViewResolver;
     }
     // End of View Resolver.
+
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry){
+    registry.addInterceptor(new AppInterceptor()).addPathPatterns("/app/*");    
+    }
+    //End of interceptor registry 
 }

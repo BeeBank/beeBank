@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/email.css">
+    <title>Document</title>
+    <style>
+            *{
+            box-sizing: border-box;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        /* Main Body Styling */
+
+        body{
+            height: 100vh;
+            background-image: url("../images/main_bg.png");
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* <!-- Wrapper --> */
+        .wrapper{
+            width: 550px;
+            height: auto;
+            padding: 15px;
+            background-color: white;
+            border-radius: 7px;
+
+        }
+        /* <!-- Email MSG Header -->*/
+        .email-msg-header{
+            text-align: center;
+        
+        }
+
+        /* <!-- Company Name--> */
+        .email-msg-header span{
+            width: 100px ;
+            text-align: center;
+            font-size: 50px;
+            color: #fcca00;
+
+        }
+        /*<!--Welcome Text-->*/
+        .welcome-text{
+            text-align: center;
+        }
+        /*<!--Verify Account Button-->*/
+        .verify-account-btn{
+            padding: 15px;
+            background-color: #fcca00;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+        }
+        /*<!--Copy Right Wrapper-->*/
+        .copy-right{
+            padding: 15px;
+            font-size: 14px;
+            color: gray;
+            margin: 20px 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Wrapper -->
+<div class="wrapper">
+    <!-- Email MSG Header-->
+    <h2 class="email-msg-header">
+        Welcome and Thank You for Choosing
+        <span> BeeBank</span>
+    </h2>
+    <!-- End of Emial MSG Header-->
+
+    <hr>
+    <!--Welcome Text-->
+    <p class="welcome-text">
+        Your Account Has Been Successfully Registered, Please Click Below To Verify Your Account
+    </p>
+    <!-- End of Welcome Text-->
+    <br>
+    <br>
+
+    <!--Verify Account Button-->
+    <center><a href="" class="verify-account-btn" role="button">Verify Account</a></center>
+    <!--End of Verify Account Button -->
+    
+    <!--Copy Right Wrapper-->
+    <div class="copy-right">
+    &copy; Copy Right 2023. All Rights Reserved.
+    </div>
+    <!--End of Copy Right Wrapper-->
+<!-- End Of Wrapper-->
+    
+</body>
+</html>
