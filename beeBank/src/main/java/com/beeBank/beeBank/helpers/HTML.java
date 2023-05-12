@@ -2,7 +2,7 @@ package com.beeBank.beeBank.helpers;
 
 public class HTML{
 
-    public static String htmlEmailTemplate(String token, String code){
+    public static String htmlEmailTemplate(String token, int code){
 
         // Verify Account URL:
             // Need URL where site is launch
@@ -114,7 +114,7 @@ public class HTML{
             
         "</body>\n" +
        "</html>";
-        return "";
+        return emailTemplate;
     }
 
 }
