@@ -20,7 +20,12 @@
     <!--Container: Total Accounts Balance-->
     <div id="total-balance" class="container d-flex py-3">
         <h2 class="me-auto">Total Accounts Balance:</h2>
-        <h2 class="ms-auto">0.00</h2>
+        <h2 class="ms-auto">
+            <c:if test ="${requestScope.totalBalance ! = null}">
+
+            <c:out value = "${totalBalance}"/>
+            </c:if>
+        </h2>
     </div>
     <!--End of Container: Total Accounts Balance-->
 

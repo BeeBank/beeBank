@@ -19,6 +19,24 @@
 
     <c:import url="components/incl/header.jsp"/>
 
+    <!-- Transact OffCanvas pulls from the left-->
+
+    <c:import url="components/transact_offcanvas.jsp"/>
+
+        <!-- Add Accounts OffCanvas pulls from the right-->
+
+        <c:import url="components/add_account_offcanvas.jsp"/>
+
+        <c:choose>
+            <c:when test="${fn:length(userAccounts) > 0}">
+                <!--when theres more than 0 accts -->
+                <c:import url="components/accounts_display.jsp"/>
+            </c:when>
+            <c:otherwise>
+                <c:import url="components/no_accounts_display.jsp"/>
+            </c:otherwise>
+</c:choose>
+
 
     <!-- Display Accounts-->
 

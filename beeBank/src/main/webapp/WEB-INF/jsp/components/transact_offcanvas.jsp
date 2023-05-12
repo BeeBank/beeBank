@@ -25,80 +25,13 @@
             </select>
             <!--End of Transaction Type Dropdown-->
 
-          
+            <c:import url="components/transact_forms/payment_form.jsp"/>
+            <c:import url="components/transact_forms/transfer_form.jsp"/>
+            <c:import url="components/transact_forms/deposit_form.jsp"/>
+            <c:import url="components/transact_forms/withdraw_form.jsp"/>
 
-          
-            <!--Card: Deposit-->
-            <div class="card deposit-card">
-                <!--Card Body-->
-                <div class="card-body">
-                    <!--Deposit Form -->
-                    <form action="" class="deposit-form">
-                        <!--Form Group-->
-                    <div class="form-group mb-2">
-                        <label for="">Enter Deposit Amount</label>
-                        <input type="text" name="deposit_amount" class="form-control" placeholder="Enter deposit Amount">
-                    </div>
-                    <!--End Form Group-->
 
-                    <!--Form Group-->
-                    <div class="form-group">
-                        <label for="">Select Account</label>
-                        <!--Start select account-->
-                    <select name="account_id" class="form-control" id="">
-                        <option value="">-- Select Account --</option>
-                    </select>
-                    <!--End select account-->
-                    </div>
-                    <!--End form Group-->
-
-                    <!--Form Group-->
-                    <div class="form-group my-1">
-                        <button id="transact-btn" class="btn btn-md btn-primary">Deposit</button>
-                    </div>
-                    <!--End Form Group-->
-                    </form>
-                    <!--End Deposit Form-->
-                </div>
-                <!--End Card Body-->
-            </div>
-            <!--End Card: Deposit-->
-
-            <!--Card: Withdrawal-->
-            <div class="card withdrawal-card">
-                <!--Card Body-->
-                <div class="card-body">
-                    <!--Withdrawal Form -->
-                    <form action="" class="withdrawal-form">
-                        <!--Form Group-->
-                    <div class="form-group mb-2">
-                        <label for="">Enter Withdrawal Amount</label>
-                        <input type="text" name="withdrawal_amount" class="form-control" placeholder="Enter Withdrawal Amount">
-                    </div>
-                    <!--End Form Group-->
-
-                    <!--Form Group-->
-                    <div class="form-group">
-                        <label for="">Select Account</label>
-                        <!--Start select account-->
-                    <select name="account_id" class="form-control" id="">
-                        <option value="">-- Select Account --</option>
-                    </select>
-                    <!--End select account-->
-                    </div>
-                    <!--End form Group-->
-
-                    <!--Form Group-->
-                    <div class="form-group my-1">
-                        <button id="transact-btn" class="btn btn-md btn-primary">Withdrawal</button>
-                    </div>
-                    <!--End Form Group-->
-                    </form>
-                    <!--End Withdrawal Form-->
-                </div>
-                <!--End Card Body-->
-            </div>
-            <!--End Card: Withdrawal-->
+        
 
         </div>
         <!--End OffCanvas Body-->
