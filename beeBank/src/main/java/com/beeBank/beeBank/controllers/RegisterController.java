@@ -40,6 +40,10 @@ public class RegisterController {
             registrationPage.addObject("confirm_pass", "The confirm field is required");
             return registrationPage;
         }
+
+
+
+        
         return registrationPage;
     }
 }
