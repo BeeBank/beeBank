@@ -16,8 +16,8 @@
 
     <!--Navigation-->
     <nav class="navigation my-2">
-        <li><a href="">Dashboard</a></li>
-        <li><a href="">Payment History</a></li>
+        <li><a href="/app/dashboard">Dashboard</a></li>
+        <li><a href="/app/payment_history">Payment History</a></li>
         <li><a href="">Transaction History</a></li>
     </nav>
     <!--End Navigation-->
