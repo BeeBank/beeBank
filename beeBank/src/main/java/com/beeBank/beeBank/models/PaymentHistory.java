@@ -14,7 +14,7 @@ public class PaymentHistory {
     private int payment_id;
     private int account_id;
     private int user_id;
-    private String beneficiary; 
+    private String beneficiary;
     private String beneficiary_acc_no; 
     private double amount; 
     private String status; 

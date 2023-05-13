@@ -6,7 +6,6 @@ import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -37,24 +36,24 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public ModelAndView register(@Valid @ModelAttribute("regiserUser")User user, 
+    public ModelAndView register(@Valid @ModelAttribute("registerUser")User user, 
                                 BindingResult result,
                                 @RequestParam("first_name") String first_name,
                                 @RequestParam("last_name") String last_name,
                                 @RequestParam("email") String email,
                                 @RequestParam("password") String password,
-                                @RequestParam("confirm_password") String confirm_passord) throws MessagingException  {
+                                @RequestParam("confirm_password") String confirm_password) throws MessagingException  {
         ModelAndView registrationPage = new ModelAndView("register");
 
         //Check for errors:
-        if(result.hasErrors() && confirm_passord.isEmpty()){
-            registrationPage.addObject("confirm_pass", "The confirm field is required");
+        if(result.hasErrors() && confirm_password.isEmpty()){
+            registrationPage.addObject("confirm_password", "The confirm field is required");
             return registrationPage;
         }
         
         // PASSWORD MATCH
-        if(!password.equals(confirm_passord)){
-            registrationPage.addObject("passwprdMisMatch", "passwords do not match");
+        if(!password.equals(confirm_password)){
+            registrationPage.addObject("passwordMisMatch", "passwords do not match");
             return registrationPage;
         }
         // GET TOKEN STRING:

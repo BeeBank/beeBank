@@ -54,8 +54,6 @@ public class AuthController {
                 model.addAttribute("error", "Incorrect Username or Password");
                 return "login";
             } 
-        
-        
         }
 
         else {
