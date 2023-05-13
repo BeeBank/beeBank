@@ -3,15 +3,19 @@ package com.beeBank.beeBank.models;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "accounts")
 public class Account {
     //column needs to be named exactly as they are in the database or need to define column
     @Id
     private int account_id;
     private int user_id;
+    @Column(name = "acount_number")
     private String account_number;
     private String account_name;
     private String account_type;
