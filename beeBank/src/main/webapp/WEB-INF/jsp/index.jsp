@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/default.css">
         <title>Home</title>
 </head>
-<body class-"d-flex align-items-center">
+<body class="d-flex align-items-center">
 
     <div class="container">
         <div class="row">

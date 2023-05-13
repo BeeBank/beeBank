@@ -30,7 +30,7 @@ double getAccountBalance(@Param("user_id") int user_id, @Param("account_id") int
 void changeAccountBalanceById(@Param("new_balance") double new_balance, @Param("account_id") int account_id);
 
 @Modifying
-@Query(value = "INSERT INTO accounts(user_id, account_number, account_name, account_type) VALUES" +
+@Query(value = "INSERT INTO accounts(user_id, acount_number, account_name, account_type) VALUES" +
 "(:user_id, :account_number, :account_name, :account_type )", nativeQuery = true)
 @Transactional
 void createBankAccount(@Param("user_id") int user_id, @Param("account_number") String account_number, @Param("account_name") String account_name, @Param("account_type") String account_type);
