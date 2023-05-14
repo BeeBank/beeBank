@@ -11,16 +11,16 @@
 
 <!-- Form Group -->
                     <div class="form-group mb-2">
-                        <label for=""> Account Holder / Beneficiary</label>
-                        <input type="text" name="beneficiary" class="form-control" placeholder="Enter Account holder / Beneficiary name">
+                        <label for=""> Payment Type</label>
+                        <input type="text" name="beneficiary" class="form-control" placeholder="Enter Payment Type">
                     </div>
                     <!-- End Of Form Group -->
 
                     <!-- Form Group -->
-                    <div class="form-group mb-2">
+                    <!-- <div class="form-group mb-2">
                         <label for=""> Beneficiary Account Number</label>
                         <input type="text" name="account_number"class="form-control" placeholder="Enter Beneficiary Account No">
-                    </div>
+                    </div> -->
                     <!-- End Of Form Group -->
 
                     <!-- Form Group -->
@@ -40,10 +40,10 @@
                     <!-- End Of Group -->
 
                     <!-- Form Group -->
-                    <div class="form-group mb-2">
+                    <!-- <div class="form-group mb-2">
                         <label for=""> Reference</label>
                         <input type="text" name="reference" class="form-control" placeholder="Enter Reference">
-                    </div>
+                    </div> -->
                     <!-- End Of Form Group -->
 
                     <!-- Form Group -->
@@ -55,7 +55,7 @@
 
                     <!-- Form Group -->
                     <div class="form-group mb-2">
-                        <button id="" class="btn btn-md transact-btn">Pay</button>
+                        <button id="" class="btn btn-md transact-btn btn-primary">Pay</button>
                     </div>
                     <!-- End Of Form Group -->
 

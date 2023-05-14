@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "v_payments")
+@Table(name = "v_paymenthist")
 public class PaymentHistory {
 
     @Id
@@ -15,10 +15,8 @@ public class PaymentHistory {
     private int account_id;
     private int user_id;
     private String beneficiary;
-    private String beneficiary_acc_no; 
     private double amount; 
     private String status; 
-    private String reference_no;
     private String reason_code; 
     private LocalDateTime created_at;
 
@@ -47,12 +45,7 @@ public class PaymentHistory {
     public void setBeneficiary(String beneficiary) {
         this.beneficiary = beneficiary;
     }
-    public String getBeneficiary_acc_no() {
-        return beneficiary_acc_no;
-    }
-    public void setBeneficiary_acc_no(String beneficiary_acc_no) {
-        this.beneficiary_acc_no = beneficiary_acc_no;
-    }
+
     public double getAmount() {
         return amount;
     }
@@ -65,12 +58,7 @@ public class PaymentHistory {
     public void setStatus(String status) {
         this.status = status;
     }
-    public String getReference_no() {
-        return reference_no;
-    }
-    public void setReference_no(String reference_no) {
-        this.reference_no = reference_no;
-    }
+
     public String getReason_code() {
         return reason_code;
     }

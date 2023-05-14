@@ -4,16 +4,18 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "paymenthist")
 public class Payment {
     @Id
     private int payment_id;
     private int account_id;
     private String beneficiary;
-    private String beneficiary_acc_no;
+    // private String beneficiary_acc_no;
     private double amount;
-    private String reference_no;
+    // private String reference_no;
     private String status;
     private String reason_code;
     private LocalDateTime created_at;
@@ -35,24 +37,24 @@ public class Payment {
     public void setBeneficiary(String beneficiary) {
         this.beneficiary = beneficiary;
     }
-    public String getBeneficiary_acc_no() {
-        return beneficiary_acc_no;
-    }
-    public void setBeneficiary_acc_no(String beneficiary_acc_no) {
-        this.beneficiary_acc_no = beneficiary_acc_no;
-    }
+    // public String getBeneficiary_acc_no() {
+    //     return beneficiary_acc_no;
+    // }
+    // public void setBeneficiary_acc_no(String beneficiary_acc_no) {
+    //     this.beneficiary_acc_no = beneficiary_acc_no;
+    // }
     public double getAmount() {
         return amount;
     }
     public void setAmount(double amount) {
         this.amount = amount;
     }
-    public String getReference_no() {
-        return reference_no;
-    }
-    public void setReference_no(String reference_no) {
-        this.reference_no = reference_no;
-    }
+    // public String getReference_no() {
+    //     return reference_no;
+    // }
+    // public void setReference_no(String reference_no) {
+    //     this.reference_no = reference_no;
+    // }
     public String getStatus() {
         return status;
     }

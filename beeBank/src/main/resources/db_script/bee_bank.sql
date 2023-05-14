@@ -48,6 +48,8 @@
     FOREIGN KEY(account_id) REFERENCES accounts(account_id) ON DELETE CASCADE
  );
  
+
+
  -- PAYMENTS TABLE STRUCTURE:
  CREATE TABLE payments(
 	payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -114,6 +116,30 @@ INNER JOIN
 ON
 	a.user_id = u.user_id;
  
+ 
+ 
+
+ CREATE VIEW v_paymenthist
+ AS
+ SELECT
+	p.payment_id,
+    a.account_id,
+    u.user_id,
+    p.beneficiary,
+    p.amount,
+    p.status,
+    p.reason_code,
+    p.created_at
+FROM
+ paymenthist AS p
+INNER JOIN
+	accounts AS a
+ ON
+	p.account_id = a.account_id
+INNER JOIN
+	users AS u
+ON
+	a.user_id = u.user_id;
  
  
  

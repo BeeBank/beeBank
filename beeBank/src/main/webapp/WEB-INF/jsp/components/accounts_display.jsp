@@ -2,15 +2,18 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 
+<head>
+<link rel="stylesheet" href="../css/main.css">
+</head>
 <!-- Container -->
 <div class="container d-flex">
 
-    <button id="add-account-btn" class="btn btn-lg shadow" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+    <button id="add-account-btn" class="btn btn-lg shadow btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
        <i class="fa fa-credit-card"></i> Add New Account
     </button>
 
     <!-- Transaction Button -->
-    <button id="transact-btn" class="btn btn-lg ms-auto shadow" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <button id="transact-btn" class="btn btn-lg ms-auto shadow btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
        <i class="fa fa-wallet"></i> Transact
     </button>
     <!-- End Of Transaction Button -->
@@ -20,8 +23,8 @@
 
 <!-- Container: Total Accounts Balance Display  -->
 <div class="container d-flex py-3">
-    <h2 class="me-auto">Total Accounts Balance:</h2>
-    <h2 class="ms-auto">
+    <h2 class="me-auto text-white">Total Accounts Balance:</h2>
+    <h2 class="ms-auto text-white">
         <c:if test="${requestScope.totalBalance != null}">
             <c:out value="${totalBalance}"/>
         </c:if>
@@ -48,10 +51,10 @@
                 <!-- Account Details List -->
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item d-flex">Account Name <span class="ms-auto"><b>${account.account_name}</b></span></li>
-                    <li class="list-group-item d-flex">Account Number <span class="ms-auto"><b>${account.account_number}</b></span></li>
+                    <!-- <li class="list-group-item d-flex">Account Number <span class="ms-auto"><b>${account.account_number}</b></span></li> -->
                     <li class="list-group-item d-flex">Account Type <span class="ms-auto"><b>${account.account_type}</b></span></li>
                     <li class="list-group-item d-flex">Account Balance <span class="ms-auto"><b>${account.balance}</b></span></li>
-                    <li class="list-group-item d-flex">Created at <span class="ms-auto"><b>${account.created_at}</b></span></li>
+                    <!-- <li class="list-group-item d-flex">Created at <span class="ms-auto"><b>${account.created_at}</b></span></li> -->
                 </ul>
                 <!-- Account Details List -->
             </div>

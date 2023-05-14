@@ -204,9 +204,9 @@ public class TransactController {
 
     @PostMapping("/payment")
     public String payment(@RequestParam("beneficiary")String beneficiary,
-                          @RequestParam("account_number")String account_number,
+                        //   @RequestParam("account_number")String account_number,
                           @RequestParam("account_id")String account_id,
-                          @RequestParam("reference")String reference,
+                        //   @RequestParam("reference")String reference,
                           @RequestParam("payment_amount")String payment_amount,
                           HttpSession session,
                           RedirectAttributes redirectAttributes){
@@ -215,8 +215,8 @@ public class TransactController {
         String successMessage;
 
         // TODO: CHECK FOR EMPTY VALUES:
-        if(beneficiary.isEmpty() || account_number.isEmpty() || account_id.isEmpty() || payment_amount.isEmpty()){
-            errorMessage = "Beneficiary, Account Number, Account Paying From and Payment Amount Cannot be Empty! ";
+        if(beneficiary.isEmpty() || account_id.isEmpty() || payment_amount.isEmpty()){
+            errorMessage = "Type, Account Name, and Payment Amount Cannot be Empty! ";
             redirectAttributes.addFlashAttribute("error", errorMessage);
             return "redirect:/app/dashboard";
         }
@@ -242,7 +242,7 @@ public class TransactController {
         if(currentBalance < paymentAmount){
             errorMessage = "You Have insufficient Funds to perform this payment";
             String reasonCode = "Could not Processed Payment due to insufficient funds!";
-            paymentRepository.makePayment(accountID, beneficiary, account_number, paymentAmount, reference, "failed", reasonCode, currentDateTime);
+            paymentRepository.makePayment(accountID, beneficiary, paymentAmount, "failed", reasonCode, currentDateTime);
             // Log Failed Transaction:
             transactRepository.logTransaction(accountID, "Payment", paymentAmount, "online", "failed", "Insufficient Funds", currentDateTime);
             redirectAttributes.addFlashAttribute("error", errorMessage);
@@ -252,9 +252,9 @@ public class TransactController {
         // TODO SET NEW BALANCE FOR ACCOUNT PAYING FROM:
         newBalance = currentBalance - paymentAmount;
 
-        // TODO: MAKE PAYMENT:
+        // TODO: MAKE PAYMENT: //reference afterpaymentAmount
         String reasonCode = "Payment Processed Successfully!";
-        paymentRepository.makePayment(accountID, beneficiary, account_number, paymentAmount, reference, "success", reasonCode, currentDateTime);
+        paymentRepository.makePayment(accountID, beneficiary, paymentAmount, "success", reasonCode, currentDateTime);
 
         // TODO: UPDATE ACCOUNT PAYING FROM:
         accountRepository.changeAccountBalanceById(newBalance, accountID);

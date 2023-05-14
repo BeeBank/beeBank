@@ -36,7 +36,7 @@
 
                     <!-- Form Group -->
                     <div class="form-group my-2">
-                        <button id="" class="btn btn-md transact-btn">Deposit</button>
+                        <button id="" class="btn btn-md transact-btn btn-primary">Deposit</button>
                     </div>
                     <!-- End Of Form Group -->
                 </form>

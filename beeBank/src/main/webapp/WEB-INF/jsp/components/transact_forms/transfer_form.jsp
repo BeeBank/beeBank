@@ -52,7 +52,7 @@
 
                         <!-- Form Group -->
                         <div class="form-group my-2">
-                            <button id="" class="btn btn-md transact-btn">Transfer</button>
+                            <button id="" class="btn btn-md transact-btn btn-primary">Transfer</button>
                         </div>
                         <!-- End Of Form Group -->
 

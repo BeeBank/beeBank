@@ -8,7 +8,7 @@
                 <div class="card-body">
 
                 <!-- Deposit Form -->
-                <form action="/transact/withdraw" method="POST" class="deposit-form">
+                <form action="/transact/withdraw" method="POST">
                     <!-- Form Group -->
                     <div class="form-group mb-2">
                         <label for=""> Enter Withdrawal Amount</label>
@@ -35,7 +35,7 @@
 
                     <!-- Form Group -->
                     <div class="form-group my-2">
-                        <button id="" class="btn btn-md transact-btn">Withdraw</button>
+                        <button id="" class="btn btn-md transact-btn btn-primary">Withdraw</button>
                     </div>
                     <!-- End Of Form Group -->
                 </form>
