@@ -12,7 +12,7 @@
 
                     <!-- Form Group -->
                     <div class="form-group">
-                        <label for="">Select Account</label>
+                        <label for="">Account Transferring From</label>
                         <!-- Select Account Option -->
                         <select name="transfer_from" class="form-control" id="">
                             <option value="">-- Select Account --</option>
@@ -28,7 +28,7 @@
 
                     <!-- Form Group -->
                     <div class="form-group">
-                        <label for="">Select Account</label>
+                        <label for="">Account Transferring To</label>
                         <!-- Select Account Option -->
                         <select name="transfer_to" class="form-control" id="">
                             <option value="">-- Select Account --</option>
@@ -45,7 +45,7 @@
 
                     <!-- Form Group -->
                     <div class="form-group mb-2">
-                        <label for=""> Enter transfer Amount</label>
+                        <label for=""> Enter Transfer Amount</label>
                         <input type="text" name="transfer_amount" class="form-control" placeholder="Enter transfer Amount">
                     </div>
                     <!-- End Of Form Group -->

@@ -20,7 +20,7 @@
     <c:import url="components/incl/header.jsp"/>
 
     <!--Container-->
-    <div class="container my-4">
+    <div class="container">
         <!--Card: Transaction History Card-->
         <div class="card transaction-history shadow">
             <!--Card Header-->
@@ -43,15 +43,15 @@
                             <th>Reason Code</th>
                             <th>Created at</th>
                         </tr>   
-                        <c:forEach items="${requestScope.transact_history}" var = "trasactionHistory">
+                        <c:forEach items="${requestScope.transact_history}" var = "transact_history">
                             <tr>
-                                <td>${trasactionHistory.transaction_id}</td>
-                                <td>${trasactionHistory.transaction_type}</td>
-                                <td>${trasactionHistory.amount}</td>
-                                <td>${trasactionHistory.source}</td>
-                                <td>${trasactionHistory.status}</td>
-                                <td>${trasactionHistory.reason_code}</td>
-                                <td>${trasactionHistory.created_at}</td>
+                                <td>${transact_history.transaction_id}</td>
+                                <td>${transact_history.transaction_type}</td>
+                                <td>${transact_history.amount}</td>
+                                <td>${transact_history.source}</td>
+                                <td>${transact_history.status}</td>
+                                <td>${transact_history.reason_code}</td>
+                                <td>${transact_history.created_at}</td>
                             </tr>
                         </c:forEach>  
                         <!-- End Of Loop Through Transaction History Records-->    

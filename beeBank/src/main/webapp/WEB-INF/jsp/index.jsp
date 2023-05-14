@@ -10,14 +10,15 @@
         <link rel="stylesheet" href="css/default.css">
         <title>Home</title>
 </head>
-<body class="d-flex align-items-center">
+<body class="d-flex align-items-center justify-content-center">
     
     <div class="container">
-        <div class="row">
-            <div class="col-sm-6 offset-md-0">
-            <div id="text-card" class="shadow-lg card w-100 text-black mb-3">
-                <div class="card-body">
-                    <!--Card Title-->
+        <!-- <div class="row"> -->
+            <!-- <div class="col-sm-6 offset-md-3">
+            <div id="text-card" class="shadow-lg card w-300 text-black mb-3"> -->
+                <div class="card login-form-card col-6 offset-md-3">
+ <div class="card-body">
+                    <!--Card Title -->
                 <h1 class="card-title">BeeBank</h1>
 
            <!-- Card Text -->

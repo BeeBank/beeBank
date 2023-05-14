@@ -77,7 +77,7 @@ public class AppController {
         // Set View:
         ModelAndView getTransactHistoryPage = new ModelAndView("transactHistory");
 
-        // Get Logged In User:\
+        // Get Logged In User:
         user = (User) session.getAttribute("user");
 
         // Get Payment History / Records:
