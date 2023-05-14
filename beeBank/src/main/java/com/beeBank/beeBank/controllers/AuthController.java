@@ -61,7 +61,7 @@ public class AuthController {
             }
             // End Of Validate Password.
         }else{
-            model.addAttribute("error", "Something went wrong please contact support");
+            model.addAttribute("error", "Error");
             return "error";
         }
         // Check If Email Exists.
