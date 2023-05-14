@@ -12,15 +12,16 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import com.beeBank.beeBank.interceptors.AppInterceptor;
-
+//src/main/java/com/beeBank/beeBank/resources
 @Configuration
-@ComponentScan(basePackages = {"src/main/java/com/beeBank/beeBank"})
+@ComponentScan(basePackages = {"com.beeBank.beeBank"})
 public class AppConfig extends WebMvcConfigurationSupport{
     
+
     @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry){
-       registry.addResourceHandler("css/**","images/**", "js/**")
-                .addResourceLocations("classpath:/static/css/","classpath:/static/images/","classpath:/static/js/");
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("css/**","images/**", "js/**")
+                .addResourceLocations("classpath:/static/css/", "classpath:/static/images/", "classpath:/static/js/");
     }
 
     @Bean
