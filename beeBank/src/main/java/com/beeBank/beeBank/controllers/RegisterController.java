@@ -26,7 +26,7 @@ public class RegisterController {
 
     @Autowired
     private UserRepository userRepository;
-    
+
     @GetMapping("/register")
     public ModelAndView getRegister(){
         ModelAndView getRegisterPage = new ModelAndView("register");
@@ -36,47 +36,52 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public ModelAndView register(@Valid @ModelAttribute("registerUser")User user, 
-                                BindingResult result,
-                                @RequestParam("first_name") String first_name,
-                                @RequestParam("last_name") String last_name,
-                                @RequestParam("email") String email,
-                                @RequestParam("password") String password,
-                                @RequestParam("confirm_password") String confirm_password) throws MessagingException  {
+    public ModelAndView register(@Valid @ModelAttribute("registerUser")User user,
+                                 BindingResult result,
+                                 @RequestParam("first_name") String first_name,
+                                 @RequestParam("last_name") String last_name,
+                                 @RequestParam("email") String email,
+                                 @RequestParam("password") String password,
+                                 @RequestParam("confirm_password") String confirm_password) throws MessagingException {
+
         ModelAndView registrationPage = new ModelAndView("register");
 
-        //Check for errors:
+        // Check For Errors:
         if(result.hasErrors() && confirm_password.isEmpty()){
-            registrationPage.addObject("confirm_password", "The confirm field is required");
+            registrationPage.addObject("confirm_pass", "The confirm Field is required");
             return registrationPage;
         }
-        
-        // PASSWORD MATCH
+
+        // TODO: CHECK FOR PASSWORD MATCH:
         if(!password.equals(confirm_password)){
             registrationPage.addObject("passwordMisMatch", "passwords do not match");
             return registrationPage;
         }
-        // GET TOKEN STRING:
+
+        // TODO: GET TOKEN STRING:
         String token = Token.generateToken();
-        // GENERATE RANDOM CODE
+
+        // TODO: GENERATE RANDOM CODE:
         Random rand = new Random();
         int bound = 123;
         int code = bound * rand.nextInt(bound);
-        
 
-        //  GET EMAIL HTML BODY:
-        String emailBody = HTML.htmlEmailTemplate(token,code); 
-        //  HASH PASSWORD:
+        // TODO: GET EMAIL HTML BODY:
+        String emailBody = HTML.htmlEmailTemplate(token, code);
+        // TODO: HASH PASSWORD:
         String hashed_password = BCrypt.hashpw(password, BCrypt.gensalt());
-        //  REGISTER USER:
-    userRepository.regiserUser(first_name, last_name, email, hashed_password, token, code);
-        //  SEND EMAIL NOTIFICATION:
+
+        // TODO: REGISTER USER:
+        userRepository.registerUser(first_name, last_name, email, hashed_password, token, code);
+
+        // TODO: SEND EMAIL NOTIFICATION:
         MailMessenger.htmlEmailMessenger("no-reply@somecompany.com", email, "Verify Account", emailBody);
-        //  RETURN TO REGISTER PAGE:
-        String successMessage = "Account Registered Successfully, Please Check Your Email and Verify Account";
+
+        // TODO: RETURN TO REGISTER PAGE:
+        String successMessage = "Account Registered Successfully, Please Check your Email and Verify Account!";
         registrationPage.addObject("success", successMessage);
-
-
         return registrationPage;
     }
+
+
 }

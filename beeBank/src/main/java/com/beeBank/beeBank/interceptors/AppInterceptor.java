@@ -12,45 +12,46 @@ import org.springframework.web.servlet.ModelAndView;
 import com.beeBank.beeBank.models.User;
 
 @Component
-public class AppInterceptor implements HandlerInterceptor{
+public class AppInterceptor  implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("In Pre Handle Interceptor Method");
-        // CHECK REQUEST URI:
+        // TODO: CHECK REQUEST URI:
         if(request.getRequestURI().startsWith("/app")){
-            //Get Session:
+            // Get Session:
             HttpSession session = request.getSession();
 
-            //Get Token Stored in Session:
+            // TODO: Get Token Stored In Session:
             String token = (String) session.getAttribute("token");
             System.out.println(token);
-
-            //Get User object stored in session 
+            // TODO: Get User Object Stored In Session:
             User user = (User)session.getAttribute("user");
+            // TODO: Check if Authenticated:
+            boolean isAuthenticated = (boolean) session.getAttribute("authenticated");
 
-            //check if authenticated
-            // boolean isAuthenticated=(boolean)session.getAttribute("authenticated");
-
-            //Validate session attributes/ objects:
+            // TODO: Validate Session Attributes / Objects:
             if(token == null || user == null){
                 response.sendRedirect("/login");
                 return false;
             }
-            //End of Validate Session Attributes/ objects 
+            // End Of Validate Session Attributes / Objects.
         }
-        //End of Check Request URI
+        // End Of Check Request URI.
         return true;
     }
-    //End of Pre Handle Mehtod  
-  
+    // End Of Pre Handle Method.
+
+
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception{
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         System.out.println("In Post Handle Interceptor Method");
     }
 
+
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception{
-        System.out.println("In After Completion Handle Interceptor Method");
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        System.out.println("In After Completion Interceptor Method");
     }
 }
+// End Of Interceptor Class.

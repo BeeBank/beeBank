@@ -13,37 +13,40 @@ import com.beeBank.beeBank.helpers.GenAccountNumber;
 import com.beeBank.beeBank.models.User;
 import com.beeBank.beeBank.repository.AccountRepository;
 
+
 @Controller
 @RequestMapping("/account")
 public class AccountController {
-@Autowired
-private AccountRepository accountRepository;
+
+    @Autowired
+    private AccountRepository accountRepository;
 
     @PostMapping("/create_account")
-    public String createAccount(@RequestParam("account_name")String accountName, 
-    @RequestParam("account_type")String accountType, 
-    RedirectAttributes redirectAttributes,
-    HttpSession session) {
+    public String createAccount(@RequestParam("account_name")String accountName,
+                                @RequestParam("account_type")String accountType,
+                                RedirectAttributes redirectAttributes,
+                                HttpSession session){
 
-        if(accountName.isEmpty() || accountType.isEmpty()) {
-            redirectAttributes.addFlashAttribute("error", "Account name and type cannot be empty");
+        // TODO: CHECK FOR EMPTY STRINGS:
+        if(accountName.isEmpty() || accountType.isEmpty()){
+            redirectAttributes.addFlashAttribute("error", "Account Name and Type Cannot be Empty!");
             return "redirect:/app/dashboard";
         }
 
-        User user = (User) session.getAttribute("user");
+        // TODO: GET LOGGED IN USER:
+        User user = (User)session.getAttribute("user");
 
+        // TODO: GET / GENERATE ACCOUNT NUMBER:
         int setAccountNumber = GenAccountNumber.generateAccountNumber();
-
         String bankAccountNumber = Integer.toString(setAccountNumber);
 
-        accountRepository.createBankAccount(user.getUser_id(), bankAccountNumber, accountName, accountType);
+        // TODO: CREATE ACCOUNT:
+        accountRepository.createBankAccount(user.getUser_id(), bankAccountNumber, accountName, accountType );
 
-        redirectAttributes.addFlashAttribute("success", "Account created successfully");
-
+        // Set Success message:
+        redirectAttributes.addFlashAttribute("success", "Account Created Successfully!");
         return "redirect:/app/dashboard";
 
-
-
     }
-    
 }
+

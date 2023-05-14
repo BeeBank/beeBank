@@ -15,24 +15,25 @@
     <link rel="stylesheet" href="css/default.css">
     <title>Register</title>
 </head>
-<body class="d-flex align-items-center justify-context-center">
-    <!--Registration Card-->
-    <div class="card registration-form-card col-6 mx-auto">
-        <!--Card Body-->
+<body class="d-flex align-items-center justify-content-center">
+
+    <!-- Card: Registration Form Card -->
+    <div class="card registration-form-card col-6 bg-transparent border-0">
+        <!-- Card Body -->
         <div class="card-body">
-            <!--Form Header-->
+            <!-- Form Header -->
             <h1 class="form-header card-title mb-3">
                 <i class="fa fa-edit"></i> Register
             </h1>
-            <!--End form Header-->
-            
+            <!-- End Of Form Header -->
+
             <!-- Display Message -->
             <c:if test="${requestScope.passwordMisMatch != null}">
                 <div class="alert alert-danger text-center border border-danger">
                     <b>${requestScope.passwordMisMatch}</b>
                 </div>
             </c:if>
-            <!-- End of Display Message -->
+            <!-- End Of Display Message -->
 
             <!-- Display Message -->
             <c:if test="${requestScope.success != null}">
@@ -40,78 +41,80 @@
                     <b>${requestScope.success}</b>
                 </div>
             </c:if>
-            <!-- End of Display Message -->
+            <!-- End Of Display Message -->
 
-            <!--Form-->
-            <form:form action="/register" class="reg-form" modelAttribute="registerUser"> 
-                <!--Row-->
+            <!-- Regsitration Form -->
+            <form:form action="/register" class="reg-form" modelAttribute="registerUser">
+                <!-- Row -->
                 <div class="row">
+                    <!-- From Group -->
+                    <div class="form-group col">
+                        <form:input type="text" path="first_name" class="form-control form-control-lg" placeholder="Enter First Name"/>
+                        <form:errors path="first_name" class="text-white bg-danger"/>
+                    </div>
+                    <!-- End Of From Group -->
 
-                 <!--Form Group-->
-                 <div class="form-group col">
-                    <form:input type="text" path="first_name" class="form-control form-control-lg" placeholder="Enter First Name"/>
-                    <form:errors path="first_name" class="text-white bg-danger"/>
-                 </div>
-                 <!--End of form group-->
-
-                 <!--Form Group-->
-                 <div class="form-group col">
-                    <form:input type="text" path="last_name" class="form-control form-control-lg" placeholder="Enter Last Name"/>
-                    <form:erros path="last_name" class="text-white bg-danger"/>
-                 </div>
-                 <!--End of form group-->
+                    <!-- From Group -->
+                    <div class="form-group col">
+                        <form:input type="text" path="last_name" class="form-control form-control-lg" placeholder="Enter Last Name"/>
+                        <form:errors path="last_name" class="text-white bg-danger"/>
+                    </div>
+                    <!-- End Of From Group -->
                 </div>
-                <!--End of row-->
+                <!-- End Of Row -->
 
-                <!--Form Group-->
-                <div class="form-group col-15">
+                <!-- From Group -->
+                <div class="form-group col">
                     <form:input type="email" path="email" class="form-control form-control-lg" placeholder="Enter Email"/>
-                    <form:erros path="email" class="text-white bg-danger"/>
+                    <form:errors path="email" class="text-white bg-danger"/>
 
-                 </div>
-                 <!--End of form group-->
+                </div>
+                <!-- End Of From Group -->
 
-                  <!--Row-->
+                <!-- Row -->
                 <div class="row">
-
-                    <!--Form Group-->
+                    <!-- From Group -->
                     <div class="form-group col">
-                       <form:input type="password" path="password" class="form-control form-control-lg" placeholder="Enter Password"/>
-                       <form:errors path="password" class="text-while bg-danger"/>
+                        <form:input type="password" path="password" class="form-control form-control-lg" placeholder="Enter Password"/>
+                        <form:errors path="password" class="text-white bg-danger"/>
                     </div>
-                    <!--End of form group-->
-   
-                    <!--Form Group-->
-                    <div class="form-group col">
-                       <input type="password" name="confirm_password" class="form-control form-control-lg" placeholder="Confirm Password"/>
-                       <small class="text-while bg-danger">${confirm_pass}</small>
-                    </div>
-                    <!--End of form group-->
-                   </div>
-                   <!--End of row-->
+                    <!-- End Of From Group -->
 
-                   <!--Form Group-->
-                    <div class="form-group col-15">
-                        <button class="btn btn-lg btn-primary col-3 border-0">Register</button>
+                    <!-- From Group -->
+                    <div class="form-group col">
+                        <input type="password" name="confirm_password" class="form-control form-control-lg" placeholder="Confirm Password"/>
+                        <small class="text-white bg-danger">${confirm_pass}</small>
                     </div>
-                    <!--End of form group-->
+                    <!-- End Of From Group -->
+                </div>
+                <!-- End Of Row -->
+
+                <!-- From Group -->
+                <div class="form-group col">
+                    <button class="btn btn-lg">Register</button>
+                </div>
+                <!-- End Of From Group -->
+
             </form:form>
-            <!--Card Text-->
-            <p class="card-text">
-                Already have an account? <span class="ms-2 text-warning"><a href="/login" class="btn bt-sm text-warning">Sign In</a></span>
+            <!-- End Of Regsitration Form -->
+
+            <!-- Card Text -->
+            <p class="card-text text-white my-2">
+                Already have an account? <span class="ms-2"><a href="/login" class="btn bt-sm text-warning">Sign In</a></span>
             </p>
-            <!--End card text-->
+            <!-- Card Text -->
 
-            <!-- Back Button To Landing Page-->
+            <!-- Back Button To Landing Page -->
             <small class="text-warning">
-                <i class="fa fa-arrow-left fa-beat"></i> <a href="/" class="btn btn-sm">Back</a>
+                <i class="fa fa-arrow-alt-circle-left"></i> <a href="/" class="btn btn-sm text-warning">Back</a>
             </small>
-            <!-- End Back Button To Landing Page-->
+            <!-- End Of Back Button To Landing Page -->
 
-
-            <!--End Form-->
         </div>
+        <!-- End Of Card Body -->
     </div>
-    
+    <!-- Card: Registration Form Card -->
+
+
 </body>
 </html>

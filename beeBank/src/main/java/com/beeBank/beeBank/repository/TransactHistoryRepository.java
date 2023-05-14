@@ -10,10 +10,9 @@ import org.springframework.stereotype.Repository;
 import com.beeBank.beeBank.models.TransactionHistory;
 
 @Repository
+public interface TransactHistoryRepository extends CrudRepository<TransactionHistory, Integer> {
 
-public interface TransactHistoryRepository extends CrudRepository <TransactionHistory, Integer> {
-
-    @Query(value= "SELECT * FROM v_transaction_history WHERE user_id = :user_id", nativeQuery= true)
-    List <TransactionHistory> getTransactionRecordById(@Param("user_id")int user_id);
-    
+    @Query(value = "SELECT * FROM v_transaction_history WHERE user_id = :user_id", nativeQuery = true)
+    List<TransactionHistory> getTransactionRecordsById(@Param("user_id")int user_id);
 }
+

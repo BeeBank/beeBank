@@ -10,8 +10,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import com.beeBank.beeBank.config.MailConfig;
 
 public class MailMessenger {
-    
-    public static void htmlEmailMessenger(String from, String toMail, String subject, String body) throws MessagingException{
+
+    public static void htmlEmailMessenger(String from, String toMail, String subject, String body) throws MessagingException {
         // Get Mail Config:
         JavaMailSender sender = MailConfig.getMailConfig();
         // Set Mime Message:
@@ -27,4 +27,9 @@ public class MailMessenger {
         // Send Message:
         sender.send(message);
     }
+    // End Of HTML EMAIL MESSAGE METHOD.
+
+
+
+
 }

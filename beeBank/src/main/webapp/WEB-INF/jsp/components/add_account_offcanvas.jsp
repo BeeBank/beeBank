@@ -1,54 +1,50 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri"http://wwww.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 
-    <!--Start of Right Off Canvas-->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <h5 id="offcanvasRightLabel">Create / Add an Account</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-    <!--Start Off Canvas Body: Acounts-->
+<!-- Right Side Offcanvas: Accounts Form Container -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel" class="text-white">Create / Add an Account </h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <!-- Offcanvas Body: Accounts Form Wrapper -->
     <div class="offcanvas-body">
-        <!--Card Accounts Form-->
+        <!-- Card: Accounts Form Card  -->
         <div class="card">
-            <!--Card Body-->
+            <!-- Card Body -->
             <div class="card-body">
-                <!--Form Group-->
-                <form action="/account/create_account" method="POST" class="add-account-form">
+                <form action="/account/create_account"  method="POST" class="add-account-form">
+                    <!-- Form Group -->
                     <div class="form-group mb-3">
                         <label for=""> Enter Account Name</label>
                         <input type="text" name="account_name" class="form-control" placeholder="Enter Account name...">
                     </div>
-                <!--End Form Group-->
-
-                <!--Form Group-->
+                    <!-- End Of Form Group -->
+                    <!-- Form Group -->
                     <div class="form-group mb-3">
-                        <label for="">Select Account Type</label>
+                        <label for=""> Select Account Type</label>
                         <select name="account_type" class="form-control" id="">
-                            <option value="checking">Checking</option>
+                            <option value="">-- Select Account Type --</option>
+                            <option value="check">Check</option>
                             <option value="savings">Savings</option>
                             <option value="business">Business</option>
                         </select>
                     </div>
-                </form>
-                <!--End Form Group-->
-                <!--Form Group-->
-                <form action="" class="add-account-form">
-                    <div class="form-group mb-3">
-                        <button id="transact-btn" class="btn btn-md btn-primary">Create Account</button>
+                    <!-- End Of Form Group -->
+
+                    <!-- Form Group -->
+                    <div class="form-group my-2">
+                        <button id="" class="btn btn-md transact-btn">Add Account</button>
                     </div>
-                <!--End Form Group-->
+                    <!-- End Of Form Group -->
+
+                </form>
             </div>
-            <!--End Card Body-->
-
+            <!-- End Of Card Body -->
         </div>
-
-        <!--End of Card Accounts Form-->
-
-
+        <!-- End Card: Accounts Form Card  -->
     </div>
-    <!--End Off Canvas Body: Accounts-->
-
-    </div>
-    <!--End of Right Off Canvas-->
+    <!-- End Of Offcanvas Body: Accounts Form Wrapper -->
+</div>
+<!-- End Of Right Side Offcanvas: Accounts Form Container -->

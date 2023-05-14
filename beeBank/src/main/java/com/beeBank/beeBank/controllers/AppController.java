@@ -81,7 +81,7 @@ public class AppController {
         user = (User) session.getAttribute("user");
 
         // Get Payment History / Records:
-        List<TransactionHistory> userTransactHistory = transactHistoryRepository.getTransactionRecordById(user.getUser_id());
+        List<TransactionHistory> userTransactHistory = transactHistoryRepository.getTransactionRecordsById(user.getUser_id());
 
         getTransactHistoryPage.addObject("transact_history", userTransactHistory);
 
