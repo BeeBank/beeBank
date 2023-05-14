@@ -85,7 +85,7 @@ public class TransactController {
 
         // TODO: CHECK FOR EMPTY FIELDS:
         if(transfer_from.isEmpty() || transfer_to.isEmpty() || transfer_amount.isEmpty()){
-             errorMessage = "The account transferring from and to along with the amount cannot be empty!";
+             errorMessage = "The account transferring from and to along with the amount cannot be empty";
             redirectAttributes.addFlashAttribute("error", errorMessage);
             return "redirect:/app/dashboard";
         }
@@ -117,7 +117,7 @@ public class TransactController {
 
         // TODO: CHECK IF TRANSFER AMOUNT IS MORE THAN CURRENT BALANCE:
         if(currentBalanceOfAccountTransferringFrom < transferAmount){
-            errorMessage = "You Have insufficient Funds to perform this Transfer!";
+            errorMessage = "Insufficient funds to perform this transfer";
             // Log Failed Transaction:
             transactRepository.logTransaction(transferFromId, "Transfer", transferAmount, "online", "failed", "Insufficient Funds", currentDateTime);
             redirectAttributes.addFlashAttribute("error", errorMessage);
@@ -140,7 +140,7 @@ public class TransactController {
         // Log Successful Transaction:
         transactRepository.logTransaction(transferFromId, "Transfer", transferAmount, "online", "success", "Transfer Transaction Successful",currentDateTime);
 
-        String successMessage = "Amount Transferred Successfully!";
+        String successMessage = "Amount Transferred Successfully";
         redirectAttributes.addFlashAttribute("success", successMessage);
         return "redirect:/app/dashboard";
     }
@@ -180,7 +180,7 @@ public class TransactController {
 
         // TODO: CHECK IF TRANSFER AMOUNT IS MORE THAN CURRENT BALANCE:
         if(currentBalance < withdrawal_amount){
-            errorMessage = "You Have insufficient Funds to perform this Withdrawal!";
+            errorMessage = "Insufficient funds to withdraw";
             // Log Failed Transaction:
             transactRepository.logTransaction(account_id, "Withdrawal", withdrawal_amount, "online", "failed", "Insufficient Funds", currentDateTime);
             redirectAttributes.addFlashAttribute("error", errorMessage);
@@ -196,7 +196,7 @@ public class TransactController {
         // Log Successful Transaction:
         transactRepository.logTransaction(account_id, "Withdrawal", withdrawal_amount, "online", "success", "Withdrawal Transaction Successful",currentDateTime);
 
-        successMessage = "Withdrawal Successful!";
+        successMessage = "Withdrawal Successful";
         redirectAttributes.addFlashAttribute("success", successMessage);
         return "redirect:/app/dashboard";
     }
@@ -216,7 +216,7 @@ public class TransactController {
 
         // TODO: CHECK FOR EMPTY VALUES:
         if(beneficiary.isEmpty() || account_id.isEmpty() || payment_amount.isEmpty()){
-            errorMessage = "Type, Account Name, and Payment Amount Cannot be Empty! ";
+            errorMessage = "Type, Account Name, and Payment Amount Cannot be Empty ";
             redirectAttributes.addFlashAttribute("error", errorMessage);
             return "redirect:/app/dashboard";
         }
@@ -240,8 +240,8 @@ public class TransactController {
 
         // TODO: CHECK IF PAYMENT AMOUNT IS MORE THAN CURRENT BALANCE:
         if(currentBalance < paymentAmount){
-            errorMessage = "You Have insufficient Funds to perform this payment";
-            String reasonCode = "Could not Processed Payment due to insufficient funds!";
+            errorMessage = "Insufficient funds to perform this payment";
+            String reasonCode = "Failed due to insufficient funds";
             paymentRepository.makePayment(accountID, beneficiary, paymentAmount, "failed", reasonCode, currentDateTime);
             // Log Failed Transaction:
             transactRepository.logTransaction(accountID, "Payment", paymentAmount, "online", "failed", "Insufficient Funds", currentDateTime);
@@ -253,7 +253,7 @@ public class TransactController {
         newBalance = currentBalance - paymentAmount;
 
         // TODO: MAKE PAYMENT: //reference afterpaymentAmount
-        String reasonCode = "Payment Processed Successfully!";
+        String reasonCode = "Payment Processed Successfully";
         paymentRepository.makePayment(accountID, beneficiary, paymentAmount, "success", reasonCode, currentDateTime);
 
         // TODO: UPDATE ACCOUNT PAYING FROM:
