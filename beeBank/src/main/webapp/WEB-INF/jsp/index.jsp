@@ -23,8 +23,8 @@
 
            <!-- Card Text -->
            <p class="card-text">
-            The banking app for busy bees. Get started today with our following services: 
-            Checking, Savings and Business accounts. Withdrawal, deposit, and make payments!
+            The banking app for busy bees. Get started today by creating various accounts: 
+            Checking, Savings and Business accounts. Then withdraw, deposit, and make payments!
            </p>
            <!-- End Of Card Text -->
 

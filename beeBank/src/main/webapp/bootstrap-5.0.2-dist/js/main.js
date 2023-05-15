@@ -34,9 +34,9 @@ transactType.addEventListener("change", () => {
 
         case "withdrawal":
             withdrawalCard.previousElementSibling.style.display = "none";
-            withdrawalCard.style.display = "block"
+            withdrawalCard.style.display = "block";
+            transferCard.style.display = "none";
             paymentCard.style.display = "none";
-            transferCard.style.display = "none"
         break;
     }
 })

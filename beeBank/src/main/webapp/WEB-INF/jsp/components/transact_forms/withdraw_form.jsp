@@ -3,7 +3,7 @@
 <%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 
  <!-- Card: Withdraw Card -->
-            <div class="card withdraw-card">
+            <div class="card withdrawal-card">
                 <!-- Card Body -->
                 <div class="card-body">
 

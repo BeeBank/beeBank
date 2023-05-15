@@ -18,7 +18,7 @@
 <body class="d-flex align-items-center justify-content-center">
 
     <!-- Card: Registration Form Card -->
-    <div class="card registration-form-card col-6 bg-transparent border-0">
+    <div class="card registration-form-card col-6">
         <!-- Card Body -->
         <div class="card-body">
             <!-- Form Header -->
@@ -91,7 +91,7 @@
 
                 <!-- From Group -->
                 <div class="form-group col">
-                    <button class="btn btn-lg">Register</button>
+                    <button class="btn btn-lg btn-primary">Register</button>
                 </div>
                 <!-- End Of From Group -->
 
@@ -99,7 +99,7 @@
             <!-- End Of Regsitration Form -->
 
             <!-- Card Text -->
-            <p class="card-text text-white my-2">
+            <p class="card-text my-2">
                 Already have an account? <span class="ms-2"><a href="/login" class="btn bt-sm text-warning">Sign In</a></span>
             </p>
             <!-- Card Text -->

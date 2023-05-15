@@ -22,7 +22,7 @@
 
         <!-- Display Name -->
         <div class="d-flex justify-content-end w-27 display-name text-white my-2 ms-1">
-            <i class="fa fa-circle text-success my-1 mr-1"></i> Welcome: <span>${user.first_name}  ${user.last_name}</span>
+            <i class="fa fa-circle text-success my-1 mr-1"></i> User: <span> ${user.first_name}  ${user.last_name}</span>
         </div>
         <!-- End Of Display Name -->
 
